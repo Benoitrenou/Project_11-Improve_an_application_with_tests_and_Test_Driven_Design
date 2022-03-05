@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+    <title>GUDLFT Points display</title>
+</head>
+<body>
+    <h1> Table of points by club </h1>
+    <a href="{{url_for('index')}}"><button> Back to homepage </button></a>
+    <table>
+        <tr>
+            <th> Club's name </th>
+            <th> Club's points </th>
+        </tr>
+        {% for club in clubs %}
+            <tr>
+                <td> {{club['name']}} </td>
+                <td> {{club['points']}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

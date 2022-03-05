@@ -21,13 +21,6 @@
         <input type="email" name="email" id=""/>
         <button type="submit">Enter</button>
     </form>
-    <ul>
-        {% for club in clubs %}
-        <li>
-            Club : {{club['name']}} / Points : {{club['points']}}
-        </li>
-        <hr />
-        {% endfor %}
-    </ul>
+    <a href="{{url_for('points_display')}}"><button> Access to club's points display </button></a>
 </body>
 </html>
