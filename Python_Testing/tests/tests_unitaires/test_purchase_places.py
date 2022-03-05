@@ -1,4 +1,3 @@
-import json
 import server
 import datetime
 from tests.conftest import client
