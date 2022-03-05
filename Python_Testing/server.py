@@ -54,10 +54,14 @@ def book(competition,club):
 
 @app.route('/purchasePlaces',methods=['POST'])
 def purchasePlaces():
+    maximum_places = 12
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
-    if placesRequired > 12:
+    if placesRequired <= 0:
+        flash('Sorry, you must choose a positive number of places - Try again')
+        return render_template('booking.html',club=club,competition=competition)
+    if placesRequired > maximum_places:
         flash('Sorry, you only can book 12 places maximum - Try again')
         return render_template('booking.html',club=club,competition=competition)
     if int(club['points']) < placesRequired:
