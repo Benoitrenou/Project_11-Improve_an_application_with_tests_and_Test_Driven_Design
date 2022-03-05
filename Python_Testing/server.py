@@ -1,17 +1,16 @@
 import json
+import datetime
 from flask import Flask,render_template,request,redirect,flash,url_for
 
 
 def loadClubs():
     with open('clubs.json') as c:
-         listOfClubs = json.load(c)['clubs']
-         return listOfClubs
+        return json.load(c)['clubs']
 
 
 def loadCompetitions():
     with open('competitions.json') as comps:
-         listOfCompetitions = json.load(comps)['competitions']
-         return listOfCompetitions
+        return json.load(comps)['competitions']
 
 
 app = Flask(__name__)
@@ -39,6 +38,14 @@ def book(competition,club):
     foundClub = [c for c in clubs if c['name'] == club][0]
     foundCompetition = [c for c in competitions if c['name'] == competition][0]
     if foundClub and foundCompetition:
+        date_competition = datetime.datetime.strptime(
+            foundCompetition['date'],
+            "%Y-%m-%d %H:%M:%S"
+            )
+        date_today = datetime.datetime.now()
+        if date_today > date_competition:
+            flash('Sorry, this competition already took place - Select an other competition')
+            return render_template('welcome.html', club=foundClub, competitions=competitions)
         return render_template('booking.html',club=foundClub,competition=foundCompetition)
     else:
         flash("Something went wrong-please try again")
