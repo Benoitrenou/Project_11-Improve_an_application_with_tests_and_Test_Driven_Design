@@ -34,7 +34,6 @@ def test_purchase_more_places_than_points(client, mocker):
     assert response.status_code == 200
     assert b'Sorry, you required more places than possible - Try again' in response.data
 
-
 def test_purchase_more_than_12_places(client, mocker):
     mocker.patch.object(
         server,
@@ -97,3 +96,33 @@ def test_booking_for_past_competition(client, mocker):
         )
     assert response.status_code == 200
     assert b'Sorry, this competition already took place - Select an other competition' in response.data
+
+def test_reflection_of_points_update(client, mocker):
+    club = mocker.patch.object(
+        server,
+        'clubs',
+        [{
+            "name":"Club Test",
+            "email":"secretary@clubtest.com",
+            "points":"15"
+            }]
+        )
+    mocker.patch.object(
+        server,
+        'competitions',
+        [{
+            "name":"Competition Test",
+            "date":"2022-03-27 10:00:00",
+            "numberOfPlaces":"14"
+            }]
+        )
+    response = client.post(
+        '/purchasePlaces',
+        data={
+            'competition': 'Competition Test',
+            'club': 'Club Test',
+            'places': '5'
+            }
+        )
+    assert response.status_code == 200
+    assert club[0]['points']==10
