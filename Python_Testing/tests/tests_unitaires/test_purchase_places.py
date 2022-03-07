@@ -1,4 +1,5 @@
 import server
+import pytest
 import datetime
 from tests.conftest import client
 
@@ -93,7 +94,7 @@ def test_purchase_negative_places(client, mocker):
     assert response.status_code == 200
     assert b'Sorry, you must choose a positive number of places - Try again' in response.data
 
-def test_booking_for_past_competition(client, mocker):
+def test_purchase_for_past_competition(client, mocker):
     mocker.patch.object(
         server,
         'clubs',
@@ -126,6 +127,36 @@ def test_booking_for_past_competition(client, mocker):
     assert response.status_code == 200
     assert b'Sorry, this competition already took place - Select an other competition' in response.data
 
+def test_purchase_with_success(client, mocker):
+    mocker.patch.object(
+        server,
+        'clubs',
+        [{
+            "name":"Club Test",
+            "email":"secretary@clubtest.com",
+            "points":"15"
+            }]
+        )
+    mocker.patch.object(
+        server,
+        'competitions',
+        [{
+            "name":"Competition Test",
+            "date":"2020-03-27 10:00:00",
+            "numberOfPlaces":"14"
+            }]
+        )
+    response = client.post(
+        '/purchasePlaces',
+        data={
+            'competition': 'Competition Test',
+            'club': 'Club Test',
+            'places': '3'
+            }
+        )
+    assert response.status_code == 200
+    assert b'Great-booking complete!' in response.data
+
 def test_reflection_of_points_update(client, mocker):
     club = mocker.patch.object(
         server,
@@ -155,3 +186,4 @@ def test_reflection_of_points_update(client, mocker):
         )
     assert response.status_code == 200
     assert club[0]['points']==10
+

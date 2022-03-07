@@ -1,4 +1,3 @@
-import server
 from tests.conftest import client
 
 
@@ -20,4 +19,12 @@ def test_login(client):
     assert response.status_code == 200
     assert b'Summary | GUDLFT Registration' in response.data
 
+def test_index(client):
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b'Welcome to the GUDLFT Registration Portal!' in  response.data
 
+def test_logout(client):
+    response = client.get('/logout')
+    assert response.status_code == 302
+    assert b'<h1>Redirecting...</h1>' in  response.data
