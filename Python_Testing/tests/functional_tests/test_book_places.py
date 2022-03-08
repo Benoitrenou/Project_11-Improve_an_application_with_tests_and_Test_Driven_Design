@@ -1,22 +1,12 @@
 import pytest
+import server
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-
-""" @pytest.fixture(scope="class")
-def setUp(request):
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    request.cls.driver = driver
-    driver.get('http://127.0.0.1:5000')
-    driver.maximize_window()
-    yield
-    driver.quit()
-
-
-@pytest.mark.usefixtures('setUp') """
-class TestLambda:
+class TestApplication:
+    
     def setup_method(self, method):
         """ Initialisation du driver Google Chrome pour Selenium
         appelée au début de chaque test de la classe """
