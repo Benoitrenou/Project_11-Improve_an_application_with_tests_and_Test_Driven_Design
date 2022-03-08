@@ -22,4 +22,4 @@ def test_book_competition_route(client, load_clubs, load_competitions):
         data=dict(places=2, club='Club Test', competition='Competition Test')
         )
     assert b'Great-booking complete!' in response.data
-    assert load_clubs[0]['points'] == 6
+    assert load_clubs[0]['points'] == 2

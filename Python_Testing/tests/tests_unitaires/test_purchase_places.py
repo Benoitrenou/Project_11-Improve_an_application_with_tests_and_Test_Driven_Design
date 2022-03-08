@@ -76,7 +76,7 @@ def test_purchase_with_success(
         data={
             'competition': 'Competition Test',
             'club': 'Club Test',
-            'places': '3'
+            'places': '2'
             }
         )
     assert response.status_code == 200
@@ -96,4 +96,4 @@ def test_reflection_of_points_update(
             }
         )
     assert response.status_code == 200
-    assert load_clubs[0]['points']==6
+    assert load_clubs[0]['points']==2
