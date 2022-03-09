@@ -1,51 +1,67 @@
-# gudlift-registration
+# projet_11
 
-1. Why
+Ce projet est un clone du projet d'application développé pour Güdlft, via le framework Flask, dans lequel sont implémentés plusieurs tests.
 
+Afin de faire fonctionner, puis de tester cette application en local, veuillez suivres les indications suivantes.
 
-    This is a proof of concept (POC) project to show a light-weight version of our competition booking platform. The aim is the keep things as light as possible, and use feedback from the users to iterate.
+## Clônage du projet
 
-2. Getting Started
+Tout d'abord, clônez en local le dépôt distant via la commande suivante dans votre terminal :
 
-    This project uses the following technologies:
+    $ git clone https://github.com/Benoitrenou/projet_11.git
 
-    * Python v3.x+
+## Création de l'environnement virtuel
 
-    * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+Pour créer un environnement virtuel, depuis votre terminal de commande, effectuez les commandes suivantes :
 
-        Whereas Django does a lot of things for us out of the box, Flask allows us to add only what we need. 
-     
+### Sous Linux/ MAC OS
 
-    * [Virtual environment](https://virtualenv.pypa.io/en/stable/installation.html)
+    $ python -m venv <environment_name>
+    exemple : python -m venv venvAPI
+    
+### Sous Windows:
+    
+    $ virtualenv <environment_name>
+    exemple : virtualenv venvAPI 
+    
+## Activation de l'environnement virtuel 
 
-        This ensures you'll be able to install the correct packages without interfering with Python on your machine.
+### Sous Linux / MAC OS:
 
-        Before you begin, please ensure you have this installed globally. 
+    $ source <environment_name>/bin/activate
+    exemple : source venvAPI/bin/activate
+   
+### Sous Windows:
 
+    $ source <environment_name>/Scripts/activate
+    exemple : source venvAPI/Scripts/activate
+    
+## Installation des packages : 
 
-3. Installation
+Afin que les packages nécessaires au fonctionnement de l'application soient installés sur l'environnement virtuel, entrez la commande suivante :
 
-    - After cloning, change into the directory and type <code>virtualenv .</code>. This will then set up a a virtual python environment within that directory.
+    $ pip install -r requirements.txt
 
-    - Next, type <code>source bin/activate</code>. You should see that your command prompt has changed to the name of the folder. This means that you can install packages in here without affecting affecting files outside. To deactivate, type <code>deactivate</code>
+## Lancement de l'application
 
-    - Rather than hunting around for the packages you need, you can install in one step. Type <code>pip install -r requirements.txt</code>. This will install all the packages listed in the respective file. If you install a package, make sure others know by updating the requirements.txt file. An easy way to do this is <code>pip freeze > requirements.txt</code>
+Flask demande à ce que vous définissez un fichier python comme variable d'environnement. Vous devez définir le fichier <code>server.py</code> comme étant ce fichier. Suivez les instructions données via ce lien [here](https://flask.palletsprojects.com/en/2.0.x/quickstart/) pour plus de détails.
 
-    - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application) for more details
+Puis depuis le répertoire Python_Testing, lancez l'application via : 
 
-    - You should now be ready to test the application. In the directory, type either <code>flask run</code> or <code>python -m flask run</code>. The app should respond with an address you should be able to go to using your browser.
+    $ flask run
 
-4. Current Setup
+## Tests
 
-    The app is powered by [JSON files](https://www.tutorialspoint.com/json/json_quick_guide.htm). This is to get around having a DB until we actually need one. The main ones are:
-     
-    * competitions.json - list of competitions
-    * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
+Pour lancer l'ensemble des tests, ouvrez un second terminal et lancez depuis le répertoire Python_Testing :
 
-5. Testing
+    $ pytest
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
+Pour lancer une session de tests de performance, placez vous dans le répertoire Python_Testing/tests/performance_tests et lancez la commande suivante :
 
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
+    $ locust
 
+Pour vérifier la couverture de tests et émettre un rapport concernant celle-ci, complémentez la commande pytest :
+
+    $ pytest --cov=. --cov-report html
+
+Les données de ces tests sont également disponibles dans le répertoire data_tests.
