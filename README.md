@@ -44,7 +44,7 @@ Afin que les packages nécessaires au fonctionnement de l'application soient ins
 
 ## Lancement de l'application
 
-Flask demande à ce que vous définissez un fichier python comme variable d'environnement. Vous devez définir le fichier <code>server.py</code> comme étant ce fichier. Suivez les instructions données via ce lien [here](https://flask.palletsprojects.com/en/2.0.x/quickstart/) pour plus de détails.
+Flask demande à ce que vous définissez un fichier python comme variable d'environnement. Vous devez définir le fichier <code>server.py</code> comme étant ce fichier. Suivez les instructions données via [ce lien](https://flask.palletsprojects.com/en/2.0.x/quickstart/) pour plus de détails.
 
 Puis depuis le répertoire Python_Testing, lancez l'application via : 
 
@@ -60,8 +60,14 @@ Pour lancer une session de tests de performance, placez vous dans le répertoire
 
     $ locust
 
-Pour vérifier la couverture de tests et émettre un rapport concernant celle-ci, complémentez la commande pytest :
+Pour vérifier la couverture de tests et émettre un rapport sur celle-ci, complémentez la commande pytest :
 
     $ pytest --cov=. --cov-report html
 
 Les données de ces tests sont également disponibles dans le répertoire data_tests.
+
+## Générer un rapport Flake8
+
+Pour générer un rapport Flake8 dans le terminal, placez vous dans le dossier de travail parent du projet, et utilisez la commande :
+
+    $ flake8 projet_11 --exclude venv,__pychache__
