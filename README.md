@@ -1,73 +1,74 @@
-# projet_11
+In the scenario of this project, an application developed for the company Güdlft with the framework Flask contains some bugs that must be corrected in a first step.
 
-Ce projet est un clone du projet d'application développé pour Güdlft, via le framework Flask, dans lequel sont implémentés plusieurs tests.
+Then, in a second step, a series of tests must be built and the application eventually corrected according to these tests.
 
-Afin de faire fonctionner, puis de tester cette application en local, veuillez suivres les indications suivantes.
+Must be created:
+    - unitary tests
+    - integration tests
+    - fonctionals tests
+    - performace tests
 
-## Clônage du projet
+the evolution of the application code during the different stages can be followed via the different branches of the repository
 
-Tout d'abord, clônez en local le dépôt distant via la commande suivante dans votre terminal :
+Objectives of the project:
+    - Identify bugs sources and correct them
+    - Discover tests and theirs tools: Pytest, unittest, Selenium, Locust
+    - Applicate Test Driven Design
 
-    $ git clone https://github.com/Benoitrenou/projet_11.git
+Follow instructions below in order to launch the application.
 
-## Création de l'environnement virtuel
+## Create virtual environment
 
-Pour créer un environnement virtuel, depuis votre terminal de commande, effectuez les commandes suivantes :
+From your terminal, enter the following commands depending on your operating system
 
-### Sous Linux/ MAC OS
+### With Linux/ MAC OS
 
     $ python -m venv <environment_name>
-    exemple : python -m venv venvAPI
+    example : python -m venv envP11
     
-### Sous Windows:
+### With Windows:
     
     $ virtualenv <environment_name>
-    exemple : virtualenv venvAPI 
+    example : virtualenv envP11 
     
-## Activation de l'environnement virtuel 
+## Activate virtual environment
 
-### Sous Linux / MAC OS:
+### With Linux / MAC OS:
 
     $ source <environment_name>/bin/activate
-    exemple : source venvAPI/bin/activate
+    example : source envP11/bin/activate
    
-### Sous Windows:
+### With Windows:
 
     $ source <environment_name>/Scripts/activate
-    exemple : source venvAPI/Scripts/activate
+    example : source envP11/Scripts/activate
     
-## Installation des packages : 
-
-Afin que les packages nécessaires au fonctionnement de l'application soient installés sur l'environnement virtuel, entrez la commande suivante :
+## Installation of packages : 
 
     $ pip install -r requirements.txt
 
-## Lancement de l'application
+## Launch application
 
-Flask demande à ce que vous définissez un fichier python comme variable d'environnement. Vous devez définir le fichier <code>server.py</code> comme étant ce fichier. Suivez les instructions données via [ce lien](https://flask.palletsprojects.com/en/2.0.x/quickstart/) pour plus de détails.
+Flask asks you to define a python file as environment variable. You must define the file <code>server.py</code> as this file.
 
-Puis depuis le répertoire Python_Testing, lancez l'application via : 
+Follow the instructions given via [this link](https://flask.palletsprojects.com/en/2.0.x/quickstart/) for more details.
+
+Then from the directory Python_Testing, launch application with the command:
 
     $ flask run
 
 ## Tests
 
-Pour lancer l'ensemble des tests, ouvrez un second terminal et lancez depuis le répertoire Python_Testing :
+To run all the tests, open a second terminal and run from the Python_Testing directory :
 
     $ pytest
 
-Pour lancer une session de tests de performance, placez vous dans le répertoire Python_Testing/tests/performance_tests et lancez la commande suivante :
-
-    $ locust
-
-Pour vérifier la couverture de tests et émettre un rapport sur celle-ci, complémentez la commande pytest :
+To check and report on test coverage, complete the pytest command:
 
     $ pytest --cov=. --cov-report html
 
-Les données de ces tests sont également disponibles dans le répertoire data_tests.
+To start a performance test session, go to the Python_Testing/tests/performance_tests directory and run the following command:
 
-## Générer un rapport Flake8
+    $ locust
 
-Pour générer un rapport Flake8 dans le terminal, placez vous dans le dossier de travail parent du projet, et utilisez la commande :
-
-    $ flake8 projet_11 --exclude venv,__pychache__
+The data from these tests are also available in the data_tests directory.
