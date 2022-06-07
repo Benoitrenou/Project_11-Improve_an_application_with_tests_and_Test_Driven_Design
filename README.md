@@ -3,17 +3,17 @@ In the scenario of this project, an application developed for the company Güdlf
 Then, in a second step, a series of tests must be built and the application eventually corrected according to these tests.
 
 Must be created:
-    - unitary tests
-    - integration tests
-    - fonctionals tests
-    - performace tests
+  - unitary tests
+  - integration tests
+  - fonctionals tests
+  - performace tests
 
 the evolution of the application code during the different stages can be followed via the different branches of the repository
 
 Objectives of the project:
-    - Identify bugs sources and correct them
-    - Discover tests and theirs tools: Pytest, unittest, Selenium, Locust
-    - Applicate Test Driven Design
+  - Identify bugs sources and correct them
+  - Discover tests and theirs tools: Pytest, unittest, Selenium, Locust
+  - Applicate Test Driven Design
 
 Follow instructions below in order to launch the application.
 
